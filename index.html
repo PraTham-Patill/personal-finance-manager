@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>FinTrack</h1>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#transactions"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
+                <li><a href="#budgets"><i class="fas fa-chart-pie"></i> Budgets</a></li>
+                <li><a href="#goals"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="#reports"><i class="fas fa-chart-line"></i> Reports</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>© 2023 FinTrack</p>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header class="content-header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-profile">
+                    <span class="notification"><i class="fas fa-bell"></i></span>
+                    <div class="profile-info">
+                        <img src="https://via.placeholder.com/40" alt="Profile">
+                        <span class="user-name">John Doe</span>
+                        <button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard" id="dashboard">
+                <h2>Dashboard</h2>
+                <div class="summary-cards">
+                    <div class="card">
+                        <div class="card-icon income"><i class="fas fa-wallet"></i></div>
+                        <div class="card-info">
+                            <h3>Total Balance</h3>
+                            <p>$12,500.00</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon income"><i class="fas fa-arrow-down"></i></div>
+                        <div class="card-info">
+                            <h3>Income</h3>
+                            <p>$4,500.00</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon expense"><i class="fas fa-arrow-up"></i></div>
+                        <div class="card-info">
+                            <h3>Expenses</h3>
+                            <p>$2,300.00</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon savings"><i class="fas fa-piggy-bank"></i></div>
+                        <div class="card-info">
+                            <h3>Savings</h3>
+                            <p>$2,200.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Expense Breakdown</h3>
+                        <div class="chart" id="expense-chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Income vs Expenses</h3>
+                        <div class="chart" id="income-expense-chart"></div>
+                    </div>
+                </div>
+
+                <div class="recent-transactions">
+                    <div class="section-header">
+                        <h3>Recent Transactions</h3>
+                        <a href="#transactions" class="view-all">View All</a>
+                    </div>
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Grocery Shopping</td>
+                                <td>Food</td>
+                                <td>Oct 15, 2023</td>
+                                <td class="expense">-$120.50</td>
+                            </tr>
+                            <tr>
+                                <td>Salary Deposit</td>
+                                <td>Income</td>
+                                <td>Oct 10, 2023</td>
+                                <td class="income">+$3,500.00</td>
+                            </tr>
+                            <tr>
+                                <td>Electric Bill</td>
+                                <td>Utilities</td>
+                                <td>Oct 8, 2023</td>
+                                <td class="expense">-$85.20</td>
+                            </tr>
+                            <tr>
+                                <td>Freelance Work</td>
+                                <td>Income</td>
+                                <td>Oct 5, 2023</td>
+                                <td class="income">+$750.00</td>
+                            </tr>
+                            <tr>
+                                <td>Restaurant Dinner</td>
+                                <td>Dining</td>
+                                <td>Oct 3, 2023</td>
+                                <td class="expense">-$65.80</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="budget-progress">
+                    <div class="section-header">
+                        <h3>Budget Progress</h3>
+                        <a href="#budgets" class="view-all">View All</a>
+                    </div>
+                    <div class="budget-cards">
+                        <div class="budget-card">
+                            <div class="budget-info">
+                                <h4>Food & Groceries</h4>
+                                <p>$350 / $500</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%;"></div>
+                            </div>
+                            <p class="budget-percentage">70%</p>
+                        </div>
+                        <div class="budget-card">
+                            <div class="budget-info">
+                                <h4>Entertainment</h4>
+                                <p>$120 / $200</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
+                            <p class="budget-percentage">60%</p>
+                        </div>
+                        <div class="budget-card">
+                            <div class="budget-info">
+                                <h4>Transportation</h4>
+                                <p>$180 / $300</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
+                            <p class="budget-percentage">60%</p>
+                        </div>
+                        <div class="budget-card warning">
+                            <div class="budget-info">
+                                <h4>Shopping</h4>
+                                <p>$290 / $300</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 97%;"></div>
+                            </div>
+                            <p class="budget-percentage">97%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Section -->
+            <div class="section hidden" id="transactions">
+                <h2>Transactions</h2>
+                <div class="transactions-controls">
+                    <div class="filter-controls">
+                        <select id="transaction-type">
+                            <option value="all">All Transactions</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expenses</option>
+                        </select>
+                        <select id="transaction-category">
+                            <option value="all">All Categories</option>
+                            <option value="food">Food & Groceries</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                            <option value="education">Education</option>
+                            <option value="salary">Salary</option>
+                            <option value="freelance">Freelance</option>
+                        </select>
+                        <div class="date-range">
+                            <input type="date" id="start-date">
+                            <span>to</span>
+                            <input type="date" id="end-date">
+                        </div>
+                    </div>
+                    <button class="add-transaction-btn"><i class="fas fa-plus"></i> Add Transaction</button>
+                </div>
+                <table class="transactions-table full-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Grocery Shopping</td>
+                            <td>Food</td>
+                            <td>Oct 15, 2023</td>
+                            <td class="expense">-$120.50</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Salary Deposit</td>
+                            <td>Income</td>
+                            <td>Oct 10, 2023</td>
+                            <td class="income">+$3,500.00</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Electric Bill</td>
+                            <td>Utilities</td>
+                            <td>Oct 8, 2023</td>
+                            <td class="expense">-$85.20</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Freelance Work</td>
+                            <td>Income</td>
+                            <td>Oct 5, 2023</td>
+                            <td class="income">+$750.00</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Restaurant Dinner</td>
+                            <td>Dining</td>
+                            <td>Oct 3, 2023</td>
+                            <td class="expense">-$65.80</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Internet Bill</td>
+                            <td>Utilities</td>
+                            <td>Oct 2, 2023</td>
+                            <td class="expense">-$60.00</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Phone Bill</td>
+                            <td>Utilities</td>
+                            <td>Oct 1, 2023</td>
+                            <td class="expense">-$45.00</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gym Membership</td>
+                            <td>Health</td>
+                            <td>Oct 1, 2023</td>
+                            <td class="expense">-$50.00</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Budgets Section -->
+            <div class="section hidden" id="budgets">
+                <h2>Budgets</h2>
+                <div class="budget-controls">
+                    <select id="budget-month">
+                        <option value="october">October 2023</option>
+                        <option value="september">September 2023</option>
+                        <option value="august">August 2023</option>
+                    </select>
+                    <button class="add-budget-btn"><i class="fas fa-plus"></i> Create Budget</button>
+                </div>
+                <div class="budget-overview">
+                    <div class="budget-summary-card">
+                        <h3>Monthly Budget</h3>
+                        <div class="budget-total">
+                            <p class="label">Total Budget:</p>
+                            <p class="amount">$2,500.00</p>
+                        </div>
+                        <div class="budget-spent">
+                            <p class="label">Spent so far:</p>
+                            <p class="amount">$1,650.00</p>
+                        </div>
+                        <div class="budget-remaining">
+                            <p class="label">Remaining:</p>
+                            <p class="amount">$850.00</p>
+                        </div>
+                        <div class="overall-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 66%;"></div>
+                            </div>
+                            <p class="budget-percentage">66% spent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-categories">
+                    <h3>Budget Categories</h3>
+                    <div class="budget-category-list">
+                        <div class="budget-category-item">
+                            <div class="category-info">
+                                <div class="category-icon"><i class="fas fa-utensils"></i></div>
+                                <div class="category-details">
+                                    <h4>Food & Groceries</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-amounts">
+                                <p class="spent">$350 / $500</p>
+                                <p class="percentage">70%</p>
+                            </div>
+                            <div class="category-actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="budget-category-item">
+                            <div class="category-info">
+                                <div class="category-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="category-details">
+                                    <h4>Utilities</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-amounts">
+                                <p class="spent">$200 / $250</p>
+                                <p class="percentage">80%</p>
+                            </div>
+                            <div class="category-actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="budget-category-item">
+                            <div class="category-info">
+                                <div class="category-icon"><i class="fas fa-car"></i></div>
+                                <div class="category-details">
+                                    <h4>Transportation</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-amounts">
+                                <p class="spent">$180 / $300</p>
+                                <p class="percentage">60%</p>
+                            </div>
+                            <div class="category-actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="budget-category-item warning">
+                            <div class="category-info">
+                                <div class="category-icon"><i class="fas fa-shopping-bag"></i></div>
+                                <div class="category-details">
+                                    <h4>Shopping</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 97%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-amounts">
+                                <p class="spent">$290 / $300</p>
+                                <p class="percentage">97%</p>
+                            </div>
+                            <div class="category-actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="budget-category-item">
+                            <div class="category-info">
+                                <div class="category-icon"><i class="fas fa-film"></i></div>
+                                <div class="category-details">
+                                    <h4>Entertainment</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-amounts">
+                                <p class="spent">$120 / $200</p>
+                                <p class="percentage">60%</p>
+                            </div>
+                            <div class="category-actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="budget-category-item">
+                            <div class="category-info">
+                                <div class="category-icon"><i class="fas fa-heartbeat"></i></div>
+                                <div class="category-details">
+                                    <h4>Health</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 40%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-amounts">
+                                <p class="spent">$80 / $200</p>
+                                <p class="percentage">40%</p>
+                            </div>
+                            <div class="category-actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goals Section -->
+            <div class="section hidden" id="goals">
+                <h2>Savings Goals</h2>
+                <div class="goals-controls">
+                    <button class="add-goal-btn"><i class="fas fa-plus"></i> Add New Goal</button>
+                </div>
+                <div class="goals-list">
+                    <div class="goal-card">
+                        <div class="goal-icon"><i class="fas fa-plane"></i></div>
+                        <div class="goal-details">
+                            <h3>Vacation Fund</h3>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%;"></div>
+                                </div>
+                                <p class="goal-percentage">65%</p>
+                            </div>
+                            <div class="goal-amounts">
+                                <p class="saved">$3,250 saved</p>
+                                <p class="target">of $5,000 target</p>
+                            </div>
+                            <p class="goal-date">Target date: Dec 15, 2023</p>
+                        </div>
+                        <div class="goal-actions">
+                            <button class="add-funds-btn">Add Funds</button>
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                        </div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon"><i class="fas fa-car"></i></div>
+                        <div class="goal-details">
+                            <h3>New Car</h3>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 25%;"></div>
+                                </div>
+                                <p class="goal-percentage">25%</p>
+                            </div>
+                            <div class="goal-amounts">
+                                <p class="saved">$5,000 saved</p>
+                                <p class="target">of $20,000 target</p>
+                            </div>
+                            <p class="goal-date">Target date: Jun 30, 2024</p>
+                        </div>
+                        <div class="goal-actions">
+                            <button class="add-funds-btn">Add Funds</button>
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                        </div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon"><i class="fas fa-laptop"></i></div>
+                        <div class="goal-details">
+                            <h3>New Laptop</h3>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 80%;"></div>
+                                </div>
+                                <p class="goal-percentage">80%</p>
+                            </div>
+                            <div class="goal-amounts">
+                                <p class="saved">$1,200 saved</p>
+                                <p class="target">of $1,500 target</p>
+                            </div>
+                            <p class="goal-date">Target date: Nov 30, 2023</p>
+                        </div>
+                        <div class="goal-actions">
+                            <button class="add-funds-btn">Add Funds</button>
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="section hidden" id="reports">
+                <h2>Financial Reports</h2>
+                <div class="reports-controls">
+                    <div class="report-type">
+                        <select id="report-type-select">
+                            <option value="expense">Expense Analysis</option>
+                            <option value="income">Income Analysis</option>
+                            <option value="cashflow">Cash Flow</option>
+                            <option value="savings">Savings Rate</option>
+                        </select>
+                    </div>
+                    <div class="report-period">
+                        <select id="report-period-select">
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="report-container">
+                    <div class="report-summary">
+                        <div class="summary-card">
+                            <h3>Total Expenses</h3>
+                            <p class="amount">$2,300.00</p>
+                            <p class="comparison"><span class="increase"><i class="fas fa-arrow-up"></i> 5%</span> vs last month</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Top Category</h3>
+                            <p class="category">Food & Groceries</p>
+                            <p class="amount">$520.00 (22.6%)</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Average Daily Spend</h3>
+                            <p class="amount">$76.67</p>
+                        </div>
+                    </div>
+                    <div class="report-charts">
+                        <div class="chart-container">
+                            <h3>Expenses by Category</h3>
+                            <div class="chart" id="expense-category-chart"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Monthly Expense Trend</h3>
+                            <div class="chart" id="expense-trend-chart"></div>
+                        </div>
+                    </div>
+                    <div class="report-details">
+                        <h3>Expense Breakdown</h3>
+                        <table class="report-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>% of Total</th>
+                                    <th>vs Last Month</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Food & Groceries</td>
+                                    <td>$520.00</td>
+                                    <td>22.6%</td>
+                                    <td><span class="increase"><i class="fas fa-arrow-up"></i> 8%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Rent</td>
+                                    <td>$800.00</td>
+                                    <td>34.8%</td>
+                                    <td><span class="neutral"><i class="fas fa-equals"></i> 0%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Utilities</td>
+                                    <td>$250.00</td>
+                                    <td>10.9%</td>
+                                    <td><span class="decrease"><i class="fas fa-arrow-down"></i> 5%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Transportation</td>
+                                    <td>$180.00</td>
+                                    <td>7.8%</td>
+                                    <td><span class="increase"><i class="fas fa-arrow-up"></i> 12%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Entertainment</td>
+                                    <td>$120.00</td>
+                                    <td>5.2%</td>
+                                    <td><span class="decrease"><i class="fas fa-arrow-down"></i> 10%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Shopping</td>
+                                    <td>$290.00</td>
+                                    <td>12.6%</td>
+                                    <td><span class="increase"><i class="fas fa-arrow-up"></i> 15%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Health</td>
+                                    <td>$140.00</td>
+                                    <td>6.1%</td>
+                                    <td><span class="increase"><i class="fas fa-arrow-up"></i> 3%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="section hidden" id="settings">
+                <h2>Settings</h2>
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h3>Account Settings</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="profile-name">Name</label>
+                                <input type="text" id="profile-name" value="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-email">Email</label>
+                                <input type="email" id="profile-email" value="john.doe@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-password">Password</label>
+                                <input type="password" id="profile-password" value="********">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-currency">Currency</label>
+                                <select id="profile-currency">
+                                    <option value="usd" selected>USD ($)</option>
+                                    <option value="eur">EUR (€)</option>
+                                    <option value="gbp">GBP (£)</option>
+                                    <option value="jpy">JPY (¥)</option>
+                                    <option value="cad">CAD ($)</option>
+                                </select>
+                            </div>
+                            <button class="save-btn">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Categories</h3>
+                        <div class="category-management">
+                            <div class="category-list">
+                                <div class="category-item">
+                                    <div class="category-name">Food & Groceries</div>
+                                    <div class="category-actions">
+                                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-name">Utilities</div>
+                                    <div class="category-actions">
+                                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-name">Transportation</div>
+                                    <div class="category-actions">
+                                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-name">Entertainment</div>
+                                    <div class="category-actions">
+                                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-name">Shopping</div>
+                                    <div class="category-actions">
+                                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="add-category-btn"><i class="fas fa-plus"></i> Add Category</button>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Notifications</h3>
+                        <div class="notification-settings">
+                            <div class="notification-option">
+                                <div class="option-label">Email Notifications</div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-label">Budget Alerts</div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-label">Goal Achievement Notifications</div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="option-label">Monthly Report</div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Data Management</h3>
+                        <div class="data-management">
+                            <button class="export-btn">Export Data</button>
+                            <button class="import-btn">Import Data</button>
+                            <button class="delete-data-btn">Delete All Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for adding transactions -->
+    <div class="modal" id="transaction-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Transaction</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="transaction-type">Transaction Type</label>
+                        <select id="transaction-type-select">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-amount">Amount</label>
+                        <input type="number" id="transaction-amount" placeholder="0.00" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-description">Description</label>
+                        <input type="text" id="transaction-description" placeholder="Enter description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-category">Category</label>
+                        <select id="transaction-category-select">
+                            <option value="food">Food & Groceries</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                            <option value="education">Education</option>
+                            <option value="salary">Salary</option>
+                            <option value="freelance">Freelance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-date">Date</label>
+                        <input type="date" id="transaction-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-notes">Notes (Optional)</label>
+                        <textarea id="transaction-notes" placeholder="Add any additional notes"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="save-btn">Save Transaction</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

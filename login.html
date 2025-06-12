@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6200ea;
+            --primary-light: #9d46ff;
+            --primary-dark: #0a00b6;
+            --accent-color: #03dac6;
+            --background-color: #f5f5f5;
+            --surface-color: #ffffff;
+            --error-color: #b00020;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .auth-container {
+            display: flex;
+            width: 900px;
+            height: 600px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .auth-image {
+            flex: 1;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .auth-image h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .auth-image p {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-image .features {
+            width: 100%;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .feature-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .auth-form {
+            flex: 1;
+            background-color: var(--surface-color);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-form h2 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .auth-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .auth-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .auth-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .form-toggle {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-image">
+            <h1>FinTrack</h1>
+            <p>Your personal finance manager to track expenses, create budgets, and achieve your financial goals.</p>
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Track your expenses and income</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Create and manage budgets</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Set and achieve savings goals</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Visualize your financial progress</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <span>Secure and private</span>
+                </div>
+            </div>
+        </div>
+        <div class="auth-form">
+            <!-- Login Form -->
+            <form id="login-form">
+                <h2>Welcome Back</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div id="login-error" class="error-message hidden"></div>
+                <button type="submit" class="auth-btn">Login</button>
+                <div class="auth-links">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <div class="form-toggle">
+                    <p>Don't have an account? <button type="button" class="toggle-btn" id="show-register">Register</button></p>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="hidden">
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirm Password</label>
+                    <input type="password" id="register-confirm-password" required>
+                </div>
+                <div id="register-error" class="error-message hidden"></div>
+                <div id="register-success" class="success-message hidden"></div>
+                <button type="submit" class="auth-btn">Register</button>
+                <div class="form-toggle">
+                    <p>Already have an account? <button type="button" class="toggle-btn" id="show-login">Login</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const showRegisterBtn = document.getElementById('show-register');
+            const showLoginBtn = document.getElementById('show-login');
+            const loginError = document.getElementById('login-error');
+            const registerError = document.getElementById('register-error');
+            const registerSuccess = document.getElementById('register-success');
+
+            // Toggle between login and register forms
+            showRegisterBtn.addEventListener('click', function() {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                loginError.classList.add('hidden');
+            });
+
+            showLoginBtn.addEventListener('click', function() {
+                registerForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                registerError.classList.add('hidden');
+                registerSuccess.classList.add('hidden');
+            });
+
+            // Handle login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = 'Logging in...';
+                submitBtn.disabled = true;
+                loginError.classList.add('hidden');
+
+                fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Login failed');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Store user info and token in localStorage
+                    const userData = data.data;
+                    localStorage.setItem('currentUser', JSON.stringify({
+                        id: userData.userId,
+                        name: userData.name,
+                        email: userData.email,
+                        token: userData.token
+                    }));
+                    
+                    // Redirect to dashboard
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Login error:', error);
+                    loginError.textContent = 'Invalid email or password';
+                    loginError.classList.remove('hidden');
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+            });
+
+            // Handle register form submission
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm-password').value;
+
+                // Validate passwords match
+                if (password !== confirmPassword) {
+                    registerError.textContent = 'Passwords do not match';
+                    registerError.classList.remove('hidden');
+                    registerSuccess.classList.add('hidden');
+                    return;
+                }
+
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = 'Registering...';
+                submitBtn.disabled = true;
+                registerError.classList.add('hidden');
+
+                // Call the register API
+                fetch('http://localhost:3000/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 409) {
+                            throw new Error('Email already registered');
+                        }
+                        throw new Error('Registration failed');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Show success message
+                    registerSuccess.textContent = 'Registration successful! You can now login.';
+                    registerSuccess.classList.remove('hidden');
+                    registerError.classList.add('hidden');
+
+                    // Clear form
+                    document.getElementById('register-name').value = '';
+                    document.getElementById('register-email').value = '';
+                    document.getElementById('register-password').value = '';
+                    document.getElementById('register-confirm-password').value = '';
+
+                    // Switch to login form after 2 seconds
+                    setTimeout(() => {
+                        registerForm.classList.add('hidden');
+                        loginForm.classList.remove('hidden');
+                        registerSuccess.classList.add('hidden');
+                    }, 2000);
+                })
+                .catch(error => {
+                    console.error('Registration error:', error);
+                    registerError.textContent = error.message || 'Registration failed';
+                    registerError.classList.remove('hidden');
+                    registerSuccess.classList.add('hidden');
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+            });
+
+            // Check if user is already logged in
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
