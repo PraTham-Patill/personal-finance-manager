@@ -9,22 +9,22 @@ A full-stack web application that enables users to manage their income, expenses
 > All screenshots are located inside the `Screens/` folder of this repository.
 
 ### 🔐 Register User
-![Register](./Screens/1%20Register%20User.png)
+![Register](./Screens/Register%20User.png)
 
 ### 🔑 Login
-![Login](./Screens/2%20Login.png)
+![Login](./Screens/Login.png)
 
 ### 💵 Transaction
-![Transaction](./Screens/3%20Transaction.png)
+![Transaction](./Screens/Transaction.png)
 
 ### 📈 Budget
-![Budget](./Screens/4%20Budget.png)
+![Budget](./Screens/Budget.png)
 
 ### 🎯 Goals
-![Goals](./Screens/5%20Goals.png)
+![Goals](./Screens/Goals.png)
 
 ### 📊 Reports
-![Reports](./Screens/6%20Reports.png)
+![Reports](./Screens/Reports.png)
 
 ### 📋 Dashboard
 ![Dashboard](./Screens/Dashboard_.png)
