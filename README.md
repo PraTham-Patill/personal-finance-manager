@@ -115,5 +115,3 @@ A full-stack web application that enables users to manage their income, expenses
 
 To verify all features, the official test script provided with the assignment was executed:
 
-```bash
-bash financial_manager_tests.sh http://localhost:3000/api
